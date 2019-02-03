@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: price-deployment
+  labels:
+    app: price
+spec:
+  selector:
+    matchLabels:
+      app: price
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: price
+    spec:
+      containers:
+      - name: price
+        image: top-coins/price
+        imagePullPolicy: Never
+        ports:
+        - name: price-service
+          containerPort: 3001
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: price-service
+spec:
+  selector:
+    app: price
+  ports:
+  - port: 3001
+    targetPort: price-service

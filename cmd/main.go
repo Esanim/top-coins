@@ -6,7 +6,7 @@ import (
 	"syscall"
 
 	"github.com/esanim/top-coins/pkg/app"
-	"github.com/esanim/top-coins/pkg/coins"
+	"github.com/esanim/top-coins/pkg/handlers/coins"
 	midl "github.com/esanim/top-coins/pkg/middleware"
 )
 
