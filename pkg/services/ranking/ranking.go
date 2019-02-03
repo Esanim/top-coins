@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"sort"
 	"strconv"
 
 	pb "github.com/esanim/top-coins/api/ranking"
@@ -60,11 +59,6 @@ func (s *server) GetRankings(ctx context.Context, r *pb.RankingRequest) (*pb.Ran
 		res := &pb.Ranking{Id: val.ID, Name: val.Name, SortOrder: uint64(sortOrder)}
 		coins = append(coins, res)
 	}
-
-	sort.Slice(coins, func(i, j int) bool {
-		return coins[i].SortOrder < coins[j].SortOrder
-	})
-	coins = coins[:r.Limit]
 
 	if err != nil {
 		fmt.Printf("Something bad happened: %s\n", err)
