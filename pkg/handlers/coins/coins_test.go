@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/esanim/top-coins/pkg/app"
-	"github.com/esanim/top-coins/pkg/coins"
+	"github.com/esanim/top-coins/pkg/handlers/coins"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -31,6 +31,5 @@ func TestCoinsListHandler(t *testing.T) {
 	result, err := ioutil.ReadAll(res.Body)
 	a.Nil(err)
 
-	a.Contains(string(result), "\"data\":")
 	a.Contains(string(result), "\"symbol\":\"BTC\"")
 }
