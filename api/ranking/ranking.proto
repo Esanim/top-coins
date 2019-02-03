@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package pb_ranking;
+
+message RankingRequest {
+  uint64 limit = 1;
+}
+
+message Ranking {
+  string Id = 1;
+  string Name = 2;
+  uint64 SortOrder = 3;
+}
+
+message RankingResponse {
+  repeated Ranking items = 1;
+}
+
+service RankingService {
+  rpc GetRankings (RankingRequest) returns (RankingResponse) {}
+}

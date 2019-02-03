@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package pb_price;
+
+message PriceRequest {
+  uint64 limit = 1;
+}
+
+message Price {
+  double Id = 1;
+  string Name = 2;
+  string Symbol = 3;
+  double PriceUSD = 4;
+}
+
+message PriceResponse {
+  repeated Price items = 1;
+}
+
+service PriceService {
+  rpc GetPrices (PriceRequest) returns (PriceResponse) {}
+}
